@@ -97,7 +97,7 @@ ubuntu2004cis_rule_2_2_1_1: true
 ubuntu2004cis_rule_2_2_1_2: true
 ubuntu2004cis_rule_2_2_1_3: true
 ubuntu2004cis_rule_2_2_1_4: true
-ubuntu2004cis_rule_2_2_2: true
+ubuntu2004cis_rule_2_2_2: false
 ubuntu2004cis_rule_2_2_3: true
 ubuntu2004cis_rule_2_2_4: true
 ubuntu2004cis_rule_2_2_5: true
