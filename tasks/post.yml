@@ -11,11 +11,11 @@
 
 - name: "POST | Perform apt package cleanup"
   apt:
-    name: "{{ apt_rc_packages.stdout_lines }}"
-    state: absent
-    purge: true
+      name: "{{ apt_rc_packages.stdout_lines }}"
+      state: absent
+      purge: true
   changed_when: false
   ignore_errors: true
   when: not ansible_check_mode
   tags:
-    - skip_ansible_lint
+      - skip_ansible_lint

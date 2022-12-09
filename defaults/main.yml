@@ -28,7 +28,6 @@ ubuntu2004cis_rule_1_1_1_4: true
 ubuntu2004cis_rule_1_1_1_5: true
 ubuntu2004cis_rule_1_1_1_6: true
 ubuntu2004cis_rule_1_1_1_7: true
-ubuntu2004cis_rule_1_1_1_8: false
 ubuntu2004cis_rule_1_1_2: true
 ubuntu2004cis_rule_1_1_3: true
 ubuntu2004cis_rule_1_1_4: true
@@ -330,7 +329,7 @@ ubuntu2004cis_config_aide: true
 # AIDE cron settings
 ubuntu2004cis_aide_cron:
   cron_user: root
-  cron_file: /etc/crontab
+  cron_file: aide
   aide_job: '/usr/bin/aide.wrapper --config /etc/aide/aide.conf --check'
   aide_minute: 0
   aide_hour: 5
@@ -480,6 +479,9 @@ tmp_mount_options:
 chrony_config_file:
   RedHat: /etc/chrony.conf
   Debian: /etc/chrony/chrony.conf
+chrony_system_user:
+  RedHat: chrony
+  Debian: _chrony
 
 ### Firewall
 ubuntu2004cis_setup_firewall: false

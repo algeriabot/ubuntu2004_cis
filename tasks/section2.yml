@@ -184,74 +184,74 @@
   block:
       - name: "SCORED | 2.1.6 | PATCH | Ensure rsh server is not enabled | rsh"
         service:
-          name: rsh.socket
-          state: stopped
-          enabled: false
+            name: rsh.socket
+            state: stopped
+            enabled: false
         when:
-          - not ubuntu2004cis_rsh_server
-          - rsh_service_status.stdout == "loaded"
-          - ubuntu2004cis_rule_2_1_6
+            - not ubuntu2004cis_rsh_server
+            - rsh_service_status.stdout == "loaded"
+            - ubuntu2004cis_rule_2_1_6
 
       - name: "SCORED | 2.1.6 | PATCH | Ensure rsh server is not enabled | rlogin"
         service:
-          name: rlogin.socket
-          state: stopped
-          enabled: false
+            name: rlogin.socket
+            state: stopped
+            enabled: false
         when:
-          - not ubuntu2004cis_rsh_server
-          - rlogin_service_status.stdout == "loaded"
-          - ubuntu2004cis_rule_2_1_6
+            - not ubuntu2004cis_rsh_server
+            - rlogin_service_status.stdout == "loaded"
+            - ubuntu2004cis_rule_2_1_6
 
       - name: "SCORED | 2.1.6 | PATCH | Ensure rsh server is not enabled | rexec"
         service:
-          name: rexec.socket
-          state: stopped
-          enabled: false
+            name: rexec.socket
+            state: stopped
+            enabled: false
         when:
-          - not ubuntu2004cis_rsh_server
-          - rexec_service_status.stdout == "loaded"
-          - ubuntu2004cis_rule_2_1_6
+            - not ubuntu2004cis_rsh_server
+            - rexec_service_status.stdout == "loaded"
+            - ubuntu2004cis_rule_2_1_6
   tags:
-    - level1
-    - scored
-    - patch
-    - rule_2.1.6
+      - level1
+      - scored
+      - patch
+      - rule_2.1.6
 
 - name: "SCORED | 2.1.7 | PATCH | Ensure talk server is not enabled"
   service:
-    name: ntalk
-    state: stopped
-    enabled: false
+      name: ntalk
+      state: stopped
+      enabled: false
   when:
-    - not ubuntu2004cis_ntalk_server
-    - ntalk_service_status.stdout == "loaded"
-    - ubuntu2004cis_rule_2_1_7
+      - not ubuntu2004cis_ntalk_server
+      - ntalk_service_status.stdout == "loaded"
+      - ubuntu2004cis_rule_2_1_7
   tags:
-    - level1
-    - scored
-    - patch
-    - rule_2.1.7
+      - level1
+      - scored
+      - patch
+      - rule_2.1.7
 
 - name: "SCORED | 2.1.8 | PATCH | Ensure telnet server is not enabled"
   service:
-    name: telnetd
-    state: stopped
-    enabled: false
+      name: telnetd
+      state: stopped
+      enabled: false
   when:
-    - not ubuntu2004cis_telnet_server
-    - telnet_service_status.stdout == "loaded"
-    - ubuntu2004cis_rule_2_1_8
+      - not ubuntu2004cis_telnet_server
+      - telnet_service_status.stdout == "loaded"
+      - ubuntu2004cis_rule_2_1_8
   tags:
-    - level1
-    - scored
-    - patch
-    - rule_2.1.8
+      - level1
+      - scored
+      - patch
+      - rule_2.1.8
 
 - name: "SCORED | 2.1.9 | PATCH | Ensure tftp server is not enabled"
   service:
-    name: tftpd-hpa
-    state: stopped
-    enabled: no
+      name: tftpd-hpa
+      state: stopped
+      enabled: no
   when:
       - not ubuntu2004cis_tftp_server
       - ubuntu2004cis_rule_2_1_9
@@ -279,16 +279,16 @@
 
 - name: "SCORED | 2.1.11 | PATCH | Ensure openbsd-inetd is not installed"
   apt:
-    name: openbsd-inetd
-    state: absent
+      name: openbsd-inetd
+      state: absent
   when:
-    - openbsd_inetd_service_status.stdout == "ok installed"
-    - ubuntu2004cis_rule_2_1_11
+      - openbsd_inetd_service_status.stdout == "ok installed"
+      - ubuntu2004cis_rule_2_1_11
   tags:
-    - level1
-    - patch
-    - scored
-    - rule_2.1.11
+      - level1
+      - patch
+      - scored
+      - rule_2.1.11
 
 - name: "SCORED | 2.2.1.1 | PATCH | Ensure time synchronization is in use"
   block:
@@ -325,12 +325,12 @@
 
       - name: "SCORED | 2.2.1.1 | PATCH | Ensure time synchronization is in use - mask systemd-timesyncd"
         systemd:
-          name: systemd-timesyncd
-          enabled: no
-          masked: yes
+            name: systemd-timesyncd
+            enabled: no
+            masked: yes
         when:
-          - ubuntu2004cis_time_synchronization == "ntp"
-          - systemd_timesyncd_service_status.stdout == "loaded"
+            - ubuntu2004cis_time_synchronization == "ntp"
+            - systemd_timesyncd_service_status.stdout == "loaded"
 
   when:
       - ubuntu2004cis_rule_2_2_1_1
@@ -368,7 +368,7 @@
         lineinfile:
             dest: /etc/sysconfig/chronyd
             regexp: "^(#)?OPTIONS"
-            line: "OPTIONS=\"-u chrony\""
+            line: "OPTIONS=\"-u {{ chrony_system_user[ansible_os_family] }}\""
             state: present
             create: true
   when:
@@ -409,8 +409,8 @@
 - name: "SCORED | 2.2.2 | PATCH | Ensure X Window System is not installed"
   apt:
       name:
-        - "xorg"
-        - "x11*"
+          - "xorg"
+          - "x11*"
       state: absent
   when:
       - not ubuntu2004cis_xwindows_required
@@ -663,20 +663,20 @@
 
 - name: "SCORED | 2.2.16 | PATCH | Ensure rsync service is not enabled "
   service:
-    name: rsync
-    state: stopped
-    enabled: false
+      name: rsync
+      state: stopped
+      enabled: false
   when:
-    - not ubuntu2004cis_rsyncd_server
-    - rsyncd_service_status.stdout == "loaded"
-    - ubuntu2004cis_rule_2_2_16
+      - not ubuntu2004cis_rsyncd_server
+      - rsyncd_service_status.stdout == "loaded"
+      - ubuntu2004cis_rule_2_2_16
   tags:
-    - level1
-    - scored
-    - rsync
-    - services
-    - patch
-    - rule_2.2.16
+      - level1
+      - scored
+      - rsync
+      - services
+      - patch
+      - rule_2.2.16
 
 - name: "SCORED | 2.2.17 | PATCH | Ensure NIS Server is not enabled"
   service:

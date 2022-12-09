@@ -116,11 +116,11 @@
 
       - name: "SCORED | 5.1.8 | PATCH | Ensure cron is restricted to authorized users"
         template:
-          src: cron.allow.j2
-          dest: /etc/cron.allow
-          owner: root
-          group: root
-          mode: 0600
+            src: cron.allow.j2
+            dest: /etc/cron.allow
+            owner: root
+            group: root
+            mode: 0600
   when:
       - ubuntu2004cis_rule_5_1_8
   tags:
@@ -658,10 +658,10 @@
 
 - name: "SCORED | 5.4.1.4 | PATCH | Ensure inactive password lock is 30 days or less"
   lineinfile:
-    state: present
-    dest: /etc/default/useradd
-    regexp: '^INACTIVE'
-    line: "INACTIVE={{ ubuntu2004cis_pass['inactive'] }}"
+      state: present
+      dest: /etc/default/useradd
+      regexp: '^INACTIVE'
+      line: "INACTIVE={{ ubuntu2004cis_pass['inactive'] }}"
   when:
       - ubuntu2004cis_rule_5_4_1_4
   tags:
@@ -732,29 +732,29 @@
 
 - name: "SCORED | 5.4.4 | PATCH | Ensure default user umask is 027 or more restrictive"
   block:
-    - name: "SCORED | 5.4.4 | PATCH | Ensure default user umask is 027 or more restrictive - /etc/bash.bashrc"
-      lineinfile:
-        state: present
-        dest: /etc/bash.bashrc
-        create: true
-        regexp: '^umask '
-        line: 'umask 027'
+      - name: "SCORED | 5.4.4 | PATCH | Ensure default user umask is 027 or more restrictive - /etc/bash.bashrc"
+        lineinfile:
+            state: present
+            dest: /etc/bash.bashrc
+            create: true
+            regexp: '^umask '
+            line: 'umask 027'
 
-    - name: "SCORED | 5.4.4 | PATCH | Ensure default user umask is 027 or more restrictive - /etc/profile"
-      lineinfile:
-        state: present
-        dest: /etc/profile
-        create: true
-        regexp: '^umask '
-        line: 'umask 027'
+      - name: "SCORED | 5.4.4 | PATCH | Ensure default user umask is 027 or more restrictive - /etc/profile"
+        lineinfile:
+            state: present
+            dest: /etc/profile
+            create: true
+            regexp: '^umask '
+            line: 'umask 027'
 
-    - name: "SCORED | 5.4.4 | PATCH | Ensure default user umask is 027 or more restrictive - /etc/profile.d/99-umask.sh"
-      lineinfile:
-        state: present
-        dest: /etc/profile.d/99-umask.sh
-        create: true
-        regexp: '^umask '
-        line: 'umask 027'
+      - name: "SCORED | 5.4.4 | PATCH | Ensure default user umask is 027 or more restrictive - /etc/profile.d/99-umask.sh"
+        lineinfile:
+            state: present
+            dest: /etc/profile.d/99-umask.sh
+            create: true
+            regexp: '^umask '
+            line: 'umask 027'
   when:
       - ubuntu2004cis_rule_5_4_4
   tags:
@@ -765,36 +765,36 @@
 
 - name: "SCORED | 5.4.5 | PATCH | Ensure default user shell timeout is 900 seconds or less"
   block:
-    - name: "SCORED | 5.4.5 | PATCH | Ensure default user shell timeout is 900 seconds or less - /etc/bash.bashrc"
-      lineinfile:
-        state: present
-        dest: /etc/bash.bashrc
-        create: true
-        regexp: '^TMOUT='
-        line: "TMOUT={{ ubuntu2004cis_shell_timeout }}"
+      - name: "SCORED | 5.4.5 | PATCH | Ensure default user shell timeout is 900 seconds or less - /etc/bash.bashrc"
+        lineinfile:
+            state: present
+            dest: /etc/bash.bashrc
+            create: true
+            regexp: '^TMOUT='
+            line: "TMOUT={{ ubuntu2004cis_shell_timeout }}"
 
-    - name: "SCORED | 5.4.5 | PATCH | Ensure default user shell timeout is 900 seconds or less - /etc/profile"
-      lineinfile:
-        state: present
-        dest: /etc/profile
-        create: true
-        regexp: '^TMOUT='
-        line: "TMOUT={{ ubuntu2004cis_shell_timeout }}"
+      - name: "SCORED | 5.4.5 | PATCH | Ensure default user shell timeout is 900 seconds or less - /etc/profile"
+        lineinfile:
+            state: present
+            dest: /etc/profile
+            create: true
+            regexp: '^TMOUT='
+            line: "TMOUT={{ ubuntu2004cis_shell_timeout }}"
 
-    - name: "SCORED | 5.4.5 | PATCH | Ensure default user shell timeout is 900 seconds or less - /etc/profile.d/99-tmout.sh"
-      lineinfile:
-        state: present
-        dest: /etc/profile.d/99-tmout.sh
-        create: true
-        regexp: '^TMOUT='
-        line: "TMOUT={{ ubuntu2004cis_shell_timeout }}"
+      - name: "SCORED | 5.4.5 | PATCH | Ensure default user shell timeout is 900 seconds or less - /etc/profile.d/99-tmout.sh"
+        lineinfile:
+            state: present
+            dest: /etc/profile.d/99-tmout.sh
+            create: true
+            regexp: '^TMOUT='
+            line: "TMOUT={{ ubuntu2004cis_shell_timeout }}"
   when:
-    - ubuntu2004cis_rule_5_4_5
+      - ubuntu2004cis_rule_5_4_5
   tags:
-    - level1
-    - patch
-    - rule_5.4.5
-    - scored
+      - level1
+      - patch
+      - rule_5.4.5
+      - scored
 
 - name: "NOTSCORED | 5.5 | PATCH | Ensure root login is restricted to system console"
   command: /bin/true
