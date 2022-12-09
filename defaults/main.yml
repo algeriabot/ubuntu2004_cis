@@ -92,11 +92,18 @@ ubuntu2004cis_rule_2_1_8: true
 ubuntu2004cis_rule_2_1_9: true
 ubuntu2004cis_rule_2_1_10: true
 ubuntu2004cis_rule_2_1_11: true
-ubuntu2004cis_rule_2_2_1_1: true
-ubuntu2004cis_rule_2_2_1_2: true
-ubuntu2004cis_rule_2_2_1_3: true
-ubuntu2004cis_rule_2_2_1_4: true
+
+#NO TIME SYNC!!!
+ubuntu2004cis_rule_2_2_1_1: false
+ubuntu2004cis_rule_2_2_1_2: false
+ubuntu2004cis_rule_2_2_1_3: false
+ubuntu2004cis_rule_2_2_1_4: false
+########
+
+#KEEP X WINDOWS!!!
 ubuntu2004cis_rule_2_2_2: false
+########
+
 ubuntu2004cis_rule_2_2_3: true
 ubuntu2004cis_rule_2_2_4: true
 ubuntu2004cis_rule_2_2_5: true
@@ -341,7 +348,7 @@ ubuntu2004cis_aide_cron:
 ubuntu2004cis_gui: false
 
 # Set to 'true' if X Windows is needed in your environment
-ubuntu2004cis_xwindows_required: false
+ubuntu2004cis_xwindows_required: true
 
 ubuntu2004cis_openldap_clients_required: false
 ubuntu2004cis_telnet_required: false
@@ -423,8 +430,8 @@ ubuntu2004cis_pwquality:
     value: '-1'
 
 ubuntu2004cis_pass:
-  max_days: 365
-  min_days: 1
+  max_days: 90
+  min_days: 10
   warn_age: 7
   inactive: 30
   history: 5
