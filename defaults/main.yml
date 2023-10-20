@@ -56,12 +56,20 @@ ubuntu2004cis_rule_1_2_2: true
 ubuntu2004cis_rule_1_3_1: true
 ubuntu2004cis_rule_1_3_2: true
 ubuntu2004cis_rule_1_3_3: true
+
+# Disable AIDE installation #########################
 ubuntu2004cis_rule_1_4_1: false
+#
+
 ubuntu2004cis_rule_1_4_2: true
 ubuntu2004cis_rule_1_5_1: true
 ubuntu2004cis_rule_1_5_1_disable_password: true
 ubuntu2004cis_rule_1_5_2: true
+
+# Don't make single user sign in #################
 ubuntu2004cis_rule_1_5_3: false
+##########
+
 ubuntu2004cis_rule_1_5_4: true
 ubuntu2004cis_rule_1_6_1: true
 ubuntu2004cis_rule_1_6_2: true
@@ -305,8 +313,8 @@ ubuntu2004cis_tftp_server: false
 ubuntu2004cis_rsh_server: false
 ubuntu2004cis_nis_server: false
 ubuntu2004cis_snmp_server: false
-ubuntu2004cis_squid_server: true
-ubuntu2004cis_smb_server: true
+ubuntu2004cis_squid_server: false
+ubuntu2004cis_smb_server: false
 ubuntu2004cis_dovecot_server: false
 ubuntu2004cis_httpd_server: false
 ubuntu2004cis_vsftpd_server: false
